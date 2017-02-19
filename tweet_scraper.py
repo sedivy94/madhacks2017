@@ -1,4 +1,6 @@
 from birdy.twitter import UserClient
+import pdb
+import json
 
 def main():
 	# OAUTH CREDENTIALS
@@ -12,14 +14,49 @@ def main():
 	resource = client.api.statuses.user_timeline
 	
 	# DATA STRUCTURES FOR QUERIES
-	users = ['katyperry', 'justinbieber', 'BarackObama', 'taylorswift13', 'rihanna', 'YouTube', 'TheEllenShow', 'ladygaga', 'Twitter', 'jtimberlake']
-	tweets = []
+	users = ['katyperry', 'justinbieber', 'BarackObama', 'taylorswift13', 'rihanna', \
+	'YouTube', 'TheEllenShow', 'ladygaga', 'Twitter', 'jtimberlake']
+	user_tweets = []
 
-	# DO SOME WORK
-	response = resource.get(screen_name = users[0], count = 40)
-	print(response.data)
+	# SCRAPE TWEETS
+	for name in users:
+		response = resource.get(screen_name=name, count=40, exclude_replies=True, \
+		contributor_details=True, include_rts=False)
+		temp = []
+		for index, tweet in enumerate(response.data):
+			temp.append(tweet)
+			print("Adding %dth last tweet by %s." % (index,name))
+		user_tweets.append(temp)
+	
+	# PRUNE TWEETS
+	for tweets in user_tweets:
+		prune(tweets)
 
-	tweets.append(response)
+	# EXPORT TWEETS TO JSON
+	with open('tweets.json', 'w') as outfile:
+		for tweets in user_tweets:
+			json.dump(tweets, outfile, sort_keys = True, indent = 4, ensure_ascii = False)
+	
+	pdb.set_trace()
 
+def prune(tweets = [], k = 0):
+	# REMOVING NON-NATIVE RETWEETS
+	new = []
+	for tweet in tweets:
+		if 'RT' not in tweet['text']:
+			new.append(tweet)
+	
+	# SORTING BY POPULARITY
+	new.sort(key=lambda x: (x['retweet_count']))
+	tweets = new[:10]
+
+	# PRINTING FOR TESTING
+	'''
+	for tweet in new:
+		print("Text:", tweet['text'])
+		print("Retweets:", tweet['retweet_count'], '\n')
+	'''
+
+	return tweets
 
 main()
