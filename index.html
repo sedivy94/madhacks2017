@@ -22,31 +22,24 @@
 
 
   <body>
-    <div class="quizContainer">
-      <table style='height:100%;width:100%;'>
+    <div class='quizContainer'>
+      <table class='fixed'>
+        <col width="30%" />
+        <col width="30%" />
+        <col width="30%" />
         <tr>
           <td>
-            <table style='height:100%'><tr><div class='quizTweet'><p id='thisTweet'>(JS) Tweet will appear here</p></div></tr><table>
+            <div class='quizTweet'><p id='thisTweet'>(JS.currentTweet) Tweet will appear here</p>
           </td>
           <td>
             <table style='height:100%;width:100%;'>
-              <tr><button class='button' onclick='document.getElementById("thisTweet").innerHTML = "Correct!"'>(JS) User 1</button></tr>
-              <tr><button class='button'>(JS) User 2</button></tr>
-              <tr><button class='button'>(JS) User 3</button></tr>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Correct!"'>(JS.firstUser) User A</button></tr>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Incorrect!"'>(JS.secondUser) User B</button></tr>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Also incorrect!"'>(JS.thirdUser) User C</button></tr>
             </table>
           </td>
           <td>
-            <table style='height:100%;width:100%;'>
-              <tr>
-                <td><h3>Score:</h3></td>
-              </tr>
-              <tr>
-                <td><div class='scoreBox'><h1>0</h1></td>
-              </tr>
-              <tr>
-                <td><button>Reset</button></td>
-              </tr>
-            </table>
+            <h1 style='text-align:center'>Your Score: <br />(JS.userScore / JS.totalScore)</h1>
           </td>
         </tr>
     </table>
