@@ -12,49 +12,50 @@
 
     <h1 class="title">Twitter Quiz</h1>
     <ul class="nav">
-      <li><a href="#">Politics</a></li>
-      <li><a href="#">Sports</a></li>
-      <li><a href="#">Hollywood</a></li>
-      <li><a href="#">Technology</a></li>
-      <li><a href="#">Random</a></li>
+      <li><a href="#" onclick='politics()'>Politics</a></li>
+      <li><a href="#" onclick='sports()'>Sports</a></li>
+      <li><a href="#" onclick='hollywood()'>Hollywood</a></li>
+      <li><a href="#" onclick='technology()'>Technology</a></li>
+      <li><a href="#" onclick='random()'>Random</a></li>
     </ul>
   </header>
 
   <script>
   var score = 0;
   var totalScore = 0;
+  var quizNo = 4;
   </script>
 
 
   <body>
     <div class='quizContainer'>
       <table class='fixed'>
-        <col width="30%" />
-        <col width="30%" />
-        <col width="30%" />
+        <col width='30%' />
+        <col width='30%' />
+        <col width='30%' />
         <tr>
           <td>
-            <div class='quizTweet'><p id='thisTweet'>(JS.currentTweet) Tweet will appear here</p>
+            <div class='quizTweet'><p id='thisTweet'>(JS.currentTweet) </p>
           </td>
           <td>
             <table style='height:100%;width:100%;'>
-              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Correct!"'>(JS.firstUser) User A</button></tr>
-              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Incorrect!"'>(JS.secondUser) User B</button></tr>
-              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Also incorrect!"'>(JS.thirdUser) User C</button></tr>
+              <tr><button id='answer1' class='selection' onclick='rightAnswer()'>(JS.firstUser) User A</button></tr>
+              <tr><button id='answer2' class='selection' onclick='wrongAnswer()'>(JS.secondUser) User B</button></tr>
+              <tr><button id='answer3' class='selection' onclick='wrongAnswer()'>(JS.thirdUser) User C</button></tr>
             </table>
           </td>
           <td>
             <p id='userScore' style='text-align:left;margin-left:3%'></p>
-              <script> document.getElementById("userScore").innerHTML = ("<h1> Your Score: <br /> " + score + " / " + totalScore + "</h1>");
-              </script>
+              <script> getScore(); </script>
           </td>
         </tr>
     </table>
     </div>
+    <p>Created at MadHacks 2017 by Mike M, Brennan S, and Kody F <button id='reset' class='resetButton' style='float:right' 
+    onclick='resetValues()'>Reset</button></p>
   </body>
 
 
   <footer>
-  <p>Created at MadHacks 2017 by Mike M, Brennan S, and Kody F</p>
   </footer>
 </html>
