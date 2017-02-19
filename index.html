@@ -20,6 +20,11 @@
     </ul>
   </header>
 
+  <script>
+  var score = 0;
+  var totalScore = 0;
+  </script>
+
 
   <body>
     <div class='quizContainer'>
@@ -39,7 +44,9 @@
             </table>
           </td>
           <td>
-            <h1 style='text-align:center'>Your Score: <br />(JS.userScore / JS.totalScore)</h1>
+            <p id='userScore' style='text-align:left;margin-left:3%'></p>
+              <script> document.getElementById("userScore").innerHTML = ("<h1> Your Score: <br /> " + score + " / " + totalScore + "</h1>");
+              </script>
           </td>
         </tr>
     </table>
