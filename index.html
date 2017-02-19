@@ -22,11 +22,34 @@
 
 
   <body>
-    <div class = "quizContainer">
-      <div class='quizTweet'>(JS) Tweet will appear here</div>
-      <div class='quizAnswer'><button class='button'>(JS) User 1</button></div>
-      <div class='quizAnswer'><button class='button'>(JS) User 2</button></div>
-      <div class='quizAnswer'><button class='button'>(JS) User 3</button></div>
+    <div class="quizContainer">
+      <table style='height:100%;width:100%;'>
+        <tr>
+          <td>
+            <table style='height:100%'><tr><div class='quizTweet'><p id='thisTweet'>(JS) Tweet will appear here</p></div></tr><table>
+          </td>
+          <td>
+            <table style='height:100%;width:100%;'>
+              <tr><button class='button' onclick='document.getElementById("thisTweet").innerHTML = "Correct!"'>(JS) User 1</button></tr>
+              <tr><button class='button'>(JS) User 2</button></tr>
+              <tr><button class='button'>(JS) User 3</button></tr>
+            </table>
+          </td>
+          <td>
+            <table style='height:100%;width:100%;'>
+              <tr>
+                <td><h3>Score:</h3></td>
+              </tr>
+              <tr>
+                <td><div class='scoreBox'><h1>0</h1></td>
+              </tr>
+              <tr>
+                <td><button>Reset</button></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
     </div>
   </body>
 
