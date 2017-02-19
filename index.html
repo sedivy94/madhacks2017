@@ -9,9 +9,7 @@
   </head>
   <header>
 
-    <!--<div class= "subTitle">
-      <center><p id="demo"><script>getDate()</script></p></center>
-    </div>-->
+
     <h1 class="title">Twitter Quiz</h1>
     <ul class="nav">
       <li><a href="#">Politics</a></li>
@@ -24,20 +22,27 @@
 
 
   <body>
-    <div class = "quizArea">
-      <p style='text-align:center'>Imbedded tweet will appear here</p>
-      <table>
+    <div class='quizContainer'>
+      <table class='fixed'>
+        <col width="30%" />
+        <col width="30%" />
+        <col width="30%" />
         <tr>
-          <th>(JS) User 1</th>
-          <th>(JS) User 2</th>
-          <th>(JS) User 3</th>
+          <td>
+            <div class='quizTweet'><p id='thisTweet'>(JS.currentTweet) Tweet will appear here</p>
+          </td>
+          <td>
+            <table style='height:100%;width:100%;'>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Correct!"'>(JS.firstUser) User A</button></tr>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Incorrect!"'>(JS.secondUser) User B</button></tr>
+              <tr><button class='selection' onclick='document.getElementById("thisTweet").innerHTML = "Also incorrect!"'>(JS.thirdUser) User C</button></tr>
+            </table>
+          </td>
+          <td>
+            <h1 style='text-align:center'>Your Score: <br />(JS.userScore / JS.totalScore)</h1>
+          </td>
         </tr>
-        <tr>
-          <td>img src = "Classpath/user1.png"</td>
-          <td>img src = "Classpath/user2.png"</td>
-          <td>img src = "Classpath/user3.png"</td>
-        </tr>
-      </table>
+    </table>
     </div>
   </body>
 
