@@ -10,8 +10,8 @@
   <header>
 
 
-    <h1 class="title">Twitter Quiz</h1>
-    <ul class="nav">
+    <h1 class='title'>Who Said What?</h1>
+    <ul class='nav'>
       <li><a href="#" onclick='politics()'>Politics</a></li>
       <li><a href="#" onclick='sports()'>Sports</a></li>
       <li><a href="#" onclick='hollywood()'>Hollywood</a></li>
@@ -35,13 +35,13 @@
         <col width='30%' />
         <tr>
           <td>
-            <div class='quizTweet'><p id='thisTweet'>(JS.currentTweet) </p>
+            <div class='quizTweet'><p style='font-size:30px;font-style:bold'>Tweet:</p><p id='thisTweet' style='font-size:30px'>Tweet:"Brady=GOAT. CONGRATS brother!!"</p>
           </td>
           <td>
             <table style='height:100%;width:100%;'>
-              <tr><button id='answer1' class='selection' onclick='rightAnswer()'>(JS.firstUser) User A</button></tr>
-              <tr><button id='answer2' class='selection' onclick='wrongAnswer()'>(JS.secondUser) User B</button></tr>
-              <tr><button id='answer3' class='selection' onclick='wrongAnswer()'>(JS.thirdUser) User C</button></tr>
+              <tr><button id='answer1' class='selection' onclick='rightAnswer()'><img class='answerPic' src='images/lebronJames.png' alt='Lebron img'><br />Lebron James<br />@kingJames</button></tr>
+              <tr><button id='answer1' class='selection' onclick='wrongAnswer()'><img class='answerPic' src='images/chrisPratt.png' alt='Chris Pratt img'><br />Chris Pratt<br />@prattprattpratt</button></tr>
+              <tr><button id='answer1' class='selection' onclick='wrongAnswer()'><img class='answerPic' src='images/serenaWilliams.png' alt='Serena Williams img'><br />Serena Williams<br />@serenawilliams</button></tr>
             </table>
           </td>
           <td>
