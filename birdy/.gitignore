@@ -1,0 +1,6 @@
+.DS_Store
+.komodotools
+birdy.komodoproject
+*.pyc
+/*.egg-info
+/dist/
