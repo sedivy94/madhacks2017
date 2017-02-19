@@ -1,0 +1,84 @@
+from twython import Twython
+import copy
+
+CONSUMER_KEY = "HeSXnulTdFaY4LDUYVSkAhShJ"
+CONSUMER_SECRET = "mJL20SLAIAA8bxsarCMQPniVFf4H7wzZZ0hDqaJPPq0DlZc0hq"
+ACCESS_KEY = "368659891-W1YIbMYsyriNMzgv8GV4eK6PUqFqyxabwGoAViCI"
+ACCESS_SECRET = "nyj4fOzlAXv7wvaWZfUJiwffDBAstGOOeATq7MyePUq6F"
+
+twitter = Twython(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
+twitter_handle1 = raw_input("Input person 1's twitter handle: ")
+twitter_handle2 = raw_input("Input person 2's twitter handle: ")
+twitter_handle3 = raw_input("Input person 3's twitter handle: ")
+print "-----------------"
+
+
+def get_tweets(twitter_handle):
+    user_timeline = twitter.get_user_timeline(screen_name=twitter_handle,
+        count=200, include_retweets=False, excludes_replies=True, includes_rts=False)
+        
+    user_timeline_copy = copy.deepcopy(user_timeline)    
+       
+    tweets = []
+    for tweet in user_timeline:
+        if tweet["is_quote_status"] == True: 
+            user_timeline_copy.remove(tweet)
+        elif tweet["retweeted"] == True:
+            user_timeline_copy.remove(tweet)
+        elif type(tweet["in_reply_to_status_id"]) == int:
+            user_timeline_copy.remove(tweet)
+        
+    for x in user_timeline_copy:
+        v = x["text"]
+        tweets.append(v)
+    
+    return tweets
+
+
+def get_twitter_name(twitter_handle):
+    user_timeline = twitter.get_user_timeline(screen_name=twitter_handle,
+        count=200, include_retweets=False, excludes_replies=True, includes_rts=False)
+    
+    for tweet in user_timeline[:1]:
+        twitter_name = tweet["user"]["name"]
+        
+    return twitter_name
+    
+
+def rid_RTS(twitter_handle):
+    new_tweets = []
+    for x in get_tweets(twitter_handle):
+        if x[0:2] == "RT":
+            pass
+        else:
+            new_tweets.append(x)
+    return new_tweets
+
+master_list = [rid_RTS(twitter_handle1), rid_RTS(twitter_handle2), rid_RTS(twitter_handle3)]
+
+import random
+correct = 0
+suck = 0
+for x in range(0,100):
+    z = random.randint(0,2)
+    k = random.randint(0, len(master_list[z])-1)
+    print master_list[z][k]
+    print "Who tweeted this?" + " " + get_twitter_name(twitter_handle1) + ", " + get_twitter_name(twitter_handle2) + " or " + get_twitter_name(twitter_handle3) + "?"
+    a = raw_input("1, 2 or 3?: ")
+    if int(a) == z+1:
+        correct += 1
+        print
+        print "Correct!"
+        print "You've been right " + str(correct) + " times"
+    else:
+        suck += 1
+        print
+        print "You Suck"
+        print "Person #" + str(z+1) + " tweeted that!"
+        print "You've sucked " + str(suck) + " times" 
+    print
+    print "---------------------"
+    print
+
+
+

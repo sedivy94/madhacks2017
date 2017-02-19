@@ -1,1 +1,8 @@
-# madhacks2017
+# madhacks2017 - "WhoSaidWhat?"
+Of the several game ideas we tossed around, every single one involved data sets (scraped from Who-Knows-Where). Whether it be playing the bitcoin market, guessing political trends over time, or twitter games, we agreed that finding suitable datasets and scraping them in a timely matter was our primary obstacle. In the end, we recognized that Twitter had the largest and most accessible data set of all.
+
+"WhoSaidWhat?" is a simple single-player game where randoms quotes are drawn from a large bank of curated tweets. The user then must determine, amongst three possible choices, who tweeted those words. A point system tracks the number of correct and incorrect answers.
+
+Python was used to leverage a Twitter API called "Birdy" to query Twitter for tweets from a hard-coded list of ten prominent Twitter users. These tweets were collected, vetted, and packaged into a JSON file. This process took longer than expected as we were all unfamiliar with leveraging APIs. Getting OAUTH credentials, understanding the API methods, understanding Twitter's queries and JSON fields, and manipulating that data all took research. 
+
+Once tweets were curated, the game itself needed to be constructed. A working model was built in Python, albeit a primitive console interface. Designing a website using HTML, CSS, and Javascript proved to be far more difficult. We all had novice experience with basic web design, but none of us had any notable experience with Javascript. As a result, we did not complete this final task. We had hopes to use Bootstrap for styling and to speed up development time but it proved to do the opposite.
